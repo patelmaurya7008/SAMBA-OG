@@ -482,90 +482,94 @@ html, body {
 }
 
 .callout-upper {
-  top: 20%;
+  top: 18%;
   left: 4%;
   flex-direction: row;
 }
 
 .callout-midsole {
-  top: 49%;
+  top: 48%;
   right: 4%;
   flex-direction: row;
 }
 
 .callout-outsole {
-  bottom: 11%;
+  bottom: 12%;
   left: 5%;
   flex-direction: row;
 }
 
+/* High-Quality Readable Card Board Styling */
 .callout-glass-card {
-  background: rgba(255, 255, 255, 0.84);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 10px 24px rgba(18, 22, 20, 0.08), inset 0 1px 1.5px #ffffff;
+  background: #ffffff;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  box-shadow: 0 14px 32px -4px rgba(18, 22, 20, 0.14), 0 3px 8px -2px rgba(18, 22, 20, 0.06), inset 0 1px 0 #ffffff;
   border-radius: 12px;
-  padding: 8px 12px;
-  max-width: 185px;
-  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+  padding: 11px 14px;
+  max-width: 215px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .callout-glass-card:hover {
-  background: rgba(255, 255, 255, 0.96);
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px rgba(18, 22, 20, 0.12), inset 0 1px 1.5px #ffffff;
+  box-shadow: 0 18px 40px -4px rgba(18, 22, 20, 0.18), 0 4px 12px -2px rgba(18, 22, 20, 0.08);
 }
 
 .callout-layer-tag {
-  display: block;
-  font-size: 8.5px;
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9px;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--pine-green, #175e3c);
+  letter-spacing: 0.12em;
+  color: #0b4f2c;
+  background: rgba(11, 79, 44, 0.09);
+  padding: 2.5px 7px;
+  border-radius: 4px;
   text-transform: uppercase;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .callout-title {
   display: block;
   font-family: 'Cabinet Grotesk', sans-serif;
-  font-size: 11.5px;
-  font-weight: 800;
-  color: #121415;
-  margin-bottom: 2px;
-  letter-spacing: -0.01em;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #0c0e0f;
+  margin-bottom: 3px;
+  letter-spacing: -0.015em;
   line-height: 1.25;
 }
 
 .callout-desc {
-  font-size: 9.5px;
-  color: #4b5250;
-  line-height: 1.35;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #353d3a;
+  line-height: 1.45;
   margin: 0;
 }
 
 /* Connecting indicator line & beacon dot */
 .callout-indicator-line {
-  width: 46px;
-  height: 1.5px;
-  background: linear-gradient(90deg, rgba(23, 94, 60, 0.15), rgba(23, 94, 60, 0.85));
+  width: 44px;
+  height: 2px;
+  background: #0b4f2c;
   position: relative;
   flex-shrink: 0;
-}
-
-.callout-midsole .callout-indicator-line {
-  width: 42px;
-  background: linear-gradient(90deg, rgba(23, 94, 60, 0.85), rgba(23, 94, 60, 0.15));
+  border-radius: 1px;
 }
 
 .callout-beacon-dot {
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: #175e3c;
+  background: #0b4f2c;
   border: 2px solid #ffffff;
-  box-shadow: 0 0 0 1px rgba(23, 94, 60, 0.5), 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 0 1.5px #0b4f2c, 0 3px 8px rgba(0, 0, 0, 0.35);
   position: relative;
   flex-shrink: 0;
   animation: beaconPulse 2s infinite ease-out;
@@ -573,13 +577,13 @@ html, body {
 
 @keyframes beaconPulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(23, 94, 60, 0.6), 0 0 0 1px rgba(23, 94, 60, 0.5);
+    box-shadow: 0 0 0 0 rgba(11, 79, 44, 0.6), 0 0 0 1.5px #0b4f2c;
   }
   70% {
-    box-shadow: 0 0 0 8px rgba(23, 94, 60, 0), 0 0 0 1px rgba(23, 94, 60, 0.5);
+    box-shadow: 0 0 0 9px rgba(11, 79, 44, 0), 0 0 0 1.5px #0b4f2c;
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(23, 94, 60, 0), 0 0 0 1px rgba(23, 94, 60, 0.5);
+    box-shadow: 0 0 0 0 rgba(11, 79, 44, 0), 0 0 0 1.5px #0b4f2c;
   }
 }
 
@@ -1912,27 +1916,29 @@ html, body {
   }
 
   .callout-glass-card {
-    max-width: 145px;
-    padding: 6px 9px;
+    max-width: 160px;
+    padding: 8px 11px;
     border-radius: 10px;
   }
 
   .callout-layer-tag {
-    font-size: 7.5px;
+    font-size: 8px;
+    padding: 2px 5px;
   }
 
   .callout-title {
-    font-size: 10.5px;
-    line-height: 1.2;
-  }
-
-  .callout-desc {
-    font-size: 8.5px;
+    font-size: 11.5px;
     line-height: 1.25;
   }
 
+  .callout-desc {
+    font-size: 9.5px;
+    line-height: 1.35;
+  }
+
   .callout-indicator-line {
-    width: 22px;
+    width: 24px;
+    height: 1.5px;
   }
 
   .callout-upper {
