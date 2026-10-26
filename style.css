@@ -1223,13 +1223,20 @@ html, body {
 }
 
 .config-add-bag-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   padding: 14px 28px;
   font-size: 14px;
   font-weight: 800;
+  border-radius: 9999px;
+  white-space: nowrap;
   flex-shrink: 0;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .primary-checkout-btn {
@@ -1931,6 +1938,136 @@ html, body {
   .callout-outsole {
     bottom: 10%;
     left: 2%;
+  }
+}
+
+/* ==========================================================================
+   Mobile Optimization: Add to Bag Button & Action Area
+   ========================================================================== */
+@media (max-width: 768px) {
+  .colorway-selection-section {
+    padding: 0 16px;
+    margin: 8px auto 24px;
+  }
+
+  .vertical-config-panel {
+    padding: 24px 20px 26px;
+    border-radius: 24px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .config-action-row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+    padding-top: 8px;
+    box-sizing: border-box;
+  }
+
+  .unified-price-box {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .price-tag-line {
+    justify-content: center;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .config-add-bag-btn,
+  #quickBagAddBtn {
+    width: 100%;
+    max-width: 100%;
+    min-height: 52px;
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    border-radius: 9999px;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-sizing: border-box;
+    background: #111213;
+    color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .config-add-bag-btn svg,
+  #quickBagAddBtn svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+  }
+
+  .config-add-bag-btn:active,
+  #quickBagAddBtn:active {
+    transform: scale(0.97);
+    background: #000000;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@media (max-width: 480px) {
+  .colorway-selection-section {
+    padding: 0 12px;
+  }
+
+  .vertical-config-panel {
+    padding: 20px 14px 22px;
+    border-radius: 20px;
+    gap: 16px;
+  }
+
+  .config-action-row {
+    gap: 14px;
+    padding-top: 6px;
+  }
+
+  .price-val {
+    font-size: 26px;
+  }
+
+  .config-add-bag-btn,
+  #quickBagAddBtn {
+    min-height: 50px;
+    padding: 13px 20px;
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    gap: 9px;
+  }
+
+  .config-add-bag-btn svg,
+  #quickBagAddBtn svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  .config-add-bag-btn,
+  #quickBagAddBtn {
+    min-height: 48px;
+    padding: 12px 14px;
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .config-add-bag-btn svg,
+  #quickBagAddBtn svg {
+    width: 16px;
+    height: 16px;
   }
 }
 
