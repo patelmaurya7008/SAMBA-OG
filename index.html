@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MARUTI SHOOES — Adidas Samba OG 3D Spatial Experience</title>
+  <meta name="description" content="MARUTI SHOOES presents the archival Adidas Samba OG with interactive 3D model, authentic materials, craftsmanship guides, and seamless Apple-grade checkout.">
+  
+  <!-- Premium Modern Typography Pairing -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cabinet+Grotesk:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+  <!-- Ambient Studio Caustic Glows -->
+  <div class="ambient-glow glow-emerald" id="ambientEmerald"></div>
+  <div class="ambient-glow glow-gum" id="ambientGum"></div>
+  <div class="ambient-glow glow-top" id="ambientTop"></div>
+
+  <!-- Custom Cursor Lens -->
+  <div class="spotlight-cursor" id="spotlightCursor"></div>
+
+  <!-- Main Viewport Shell -->
+  <div class="experience-container" id="experienceContainer">
+    
+    <!-- Top Spatial Floating Capsule Nav (3 Separate Glass Pills matching reference photo) -->
+    <header class="photo-nav-header">
+      <!-- Left Pill: Adidas Brand Icon -->
+      <a href="#" class="glass-capsule nav-logo-pill" id="navLogoPill" aria-label="Adidas Brand Home">
+        <svg class="adidas-mountain-logo" viewBox="0 0 36 24" width="34" height="22" fill="currentColor">
+          <polygon points="1.5,21 7,21 12,13.5 6.5,13.5"/>
+          <polygon points="10,21 15.5,21 23.5,8.5 18,8.5"/>
+          <polygon points="18.5,21 24,21 34.5,4 29,4"/>
+        </svg>
+      </a>
+
+      <!-- Center Pill: Navigation -->
+      <nav class="glass-capsule nav-links-pill" aria-label="Samba Navigation">
+        <button class="nav-cat-btn active" data-cat="pine" id="catPineBtn">PINE GREEN</button>
+        <button class="nav-cat-btn" data-cat="disassembly" id="catDisassembleBtn">3D DISASSEMBLY</button>
+        <button class="nav-cat-btn" data-cat="anatomy" id="catAnatomyBtn">ANATOMY</button>
+        <button class="nav-cat-btn" data-cat="craft" id="catCraftBtn">CRAFT</button>
+      </nav>
+
+      <!-- Right Pill: Bag (1) Capsule Button -->
+      <button class="glass-capsule nav-bag-pill" id="bagBtn" aria-label="Open Shopping Bag">
+        <svg class="nav-cart-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="bag-label-text">BAG (<span id="bagCounter">1</span>)</span>
+      </button>
+    </header>
+
+    <!-- 3D Scroll-Driven Hero Canvas -->
+    <div class="hero-scroll-track" id="heroScrollTrack">
+      <div class="hero-sticky-container" id="heroStickyContainer">
+        
+        <!-- Center Stage: Shoe centered precisely on SAMBA OG -->
+        <div class="hero-center-stage" id="heroCenterStage">
+          
+          <!-- Big Bold Architectural Text on the back of the shoe: SAMBA OG -->
+          <div class="samba-og-backdrop" id="sambaOgBackdrop" aria-hidden="true">
+            <span class="backdrop-word backdrop-samba" id="backdropSamba">SAMBA</span>
+            <span class="backdrop-word backdrop-og" id="backdropOg">OG</span>
+          </div>
+
+          <!-- The 3D Disassembling Sneaker Rig (150-Frame Real-Time 3D Engine) -->
+          <div class="hero-shoe-rig" id="shoeHeroRig">
+            <div class="shoe-interactive-container" id="shoeInteractiveContainer">
+              
+              <!-- 60FPS Hardware-Accelerated 3D Disassembly Canvas (Ultra-HD 1280x720) -->
+              <canvas 
+                id="disassembleCanvas" 
+                width="1280" 
+                height="720" 
+                class="disassemble-canvas"
+                aria-label="Adidas Samba OG 3D Disassembly Interactive View"
+              ></canvas>
+
+              <!-- Dynamic Contact & Ground Shadow -->
+              <div class="hero-shoe-shadow" id="heroShoeShadow"></div>
+            </div>
+          </div>
+
+          <!-- Exploded Layer Technical Callouts (Revealed as shoe disassembles) -->
+          <div class="exploded-callouts" id="explodedCallouts">
+            
+            <!-- Callout 1: Upper Chassis -->
+            <div class="exploded-callout callout-upper" id="calloutUpper">
+              <div class="callout-glass-card">
+                <span class="callout-layer-tag">LAYER 01 • UPPER</span>
+                <strong class="callout-title">Full-Grain Leather &amp; T-Toe Suede</strong>
+                <p class="callout-desc">Supple pine green cowhide chassis with loosened cotton laces and iconic zig-zag 3-Stripes.</p>
+              </div>
+              <div class="callout-indicator-line line-upper"></div>
+              <div class="callout-beacon-dot dot-upper"></div>
+            </div>
+
+            <!-- Callout 2: Midsole / Footbed -->
+            <div class="exploded-callout callout-midsole" id="calloutMidsole">
+              <div class="callout-beacon-dot dot-midsole"></div>
+              <div class="callout-indicator-line line-midsole"></div>
+              <div class="callout-glass-card">
+                <span class="callout-layer-tag">LAYER 02 • CUSHIONING</span>
+                <strong class="callout-title">Anatomic EVA Footbed</strong>
+                <p class="callout-desc">Die-cut responsive micro-foam footbed providing immediate zero break-in comfort.</p>
+              </div>
+            </div>
+
+            <!-- Callout 3: Outsole -->
+            <div class="exploded-callout callout-outsole" id="calloutOutsole">
+              <div class="callout-glass-card">
+                <span class="callout-layer-tag">LAYER 03 • TRACTION</span>
+                <strong class="callout-title">Vulcanized Gum Cupsole</strong>
+                <p class="callout-desc">Low-profile amber rubber cupsole with interior honeycomb flexibility chamber.</p>
+              </div>
+              <div class="callout-indicator-line line-outsole"></div>
+              <div class="callout-beacon-dot dot-outsole"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Center Stage is pure, clean, and spacious -->
+      </div>
+    </div>
+
+    <!-- Modal / Screen 1: Bag & Checkout Forwarding Screen -->
+    <section class="spatial-overlay-view" id="bagCheckoutView" aria-hidden="true">
+      <div class="checkout-layout-grid">
+        
+        <!-- Left Column: Order Summary Glass Card -->
+        <div class="glass-card checkout-summary-card">
+          <div class="checkout-card-header">
+            <h2 class="section-title">Your Shopping Bag</h2>
+            <button class="close-view-btn" id="closeBagBtn" aria-label="Return to 3D View">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+          </div>
+
+          <div class="bag-item-row">
+            <img src="assets/test_hd_001.webp" alt="Samba OG Pine Green" class="bag-thumb" id="bagItemImg">
+            <div class="bag-item-details">
+              <div class="bag-item-brand">ADIDAS ORIGINALS</div>
+              <h3 class="bag-item-title">Samba OG</h3>
+              <div class="bag-item-meta" id="bagItemMeta">Colorway: Pine Green • Size: 8.5 US</div>
+              <div class="bag-item-quantity">
+                <span>Qty: 1</span>
+                <span class="item-authenticity-tag">MARUTI Certified</span>
+              </div>
+            </div>
+            <div class="bag-item-price" id="bagItemPrice">$110.00</div>
+          </div>
+
+          <div class="bill-breakdown">
+            <div class="bill-row">
+              <span>Retail Subtotal</span>
+              <span id="subtotalVal">$110.00</span>
+            </div>
+            <div class="bill-row">
+              <span>Express Insured Shipping</span>
+              <span class="free-badge">FREE</span>
+            </div>
+            <div class="bill-row">
+              <span>Authentication &amp; Packing</span>
+              <span class="free-badge">COMPLIMENTARY</span>
+            </div>
+            <div class="bill-row total-row">
+              <span>Final Total</span>
+              <span class="final-price" id="finalTotalVal">$110.00</span>
+            </div>
+          </div>
+
+          <div class="store-badge-capsule">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Secured &amp; Dispatched by MARUTI SHOOES • Official Partner</span>
+          </div>
+        </div>
+
+        <!-- Right Column: Full Address & Payment Methods -->
+        <div class="glass-card checkout-form-card">
+          <h2 class="section-title">Shipping &amp; Payment Details</h2>
+          
+          <form id="checkoutForm" onsubmit="event.preventDefault();">
+            <!-- Full Address Section -->
+            <div class="form-group-block">
+              <label class="form-section-label">1. DELIVERY ADDRESS</label>
+              
+              <div class="form-row-2">
+                <div class="input-field">
+                  <label for="fullName">Full Name</label>
+                  <input type="text" id="fullName" placeholder="e.g. Maurya Patel" required>
+                </div>
+                <div class="input-field">
+                  <label for="phoneNumber">Mobile Number</label>
+                  <input type="tel" id="phoneNumber" placeholder="e.g. 735946708" required>
+                </div>
+              </div>
+
+              <div class="input-field">
+                <label for="emailAddress">Email for Tracking Receipt</label>
+                <input type="email" id="emailAddress" placeholder="e.g. patelmaurya73@gmail.com" required>
+              </div>
+
+              <div class="input-field">
+                <label for="streetAddress">Street Address / House No. / Landmark</label>
+                <input type="text" id="streetAddress" placeholder="Flat, Street name, Locality" required>
+              </div>
+
+              <div class="form-row-3">
+                <div class="input-field">
+                  <label for="city">City</label>
+                  <input type="text" id="city" placeholder="Ahmedabad" required>
+                </div>
+                <div class="input-field">
+                  <label for="state">State</label>
+                  <input type="text" id="state" placeholder="Gujarat" required>
+                </div>
+                <div class="input-field">
+                  <label for="pincode">PIN / Postal Code</label>
+                  <input type="text" id="pincode" placeholder="380015" required>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payment Methods Section -->
+            <div class="form-group-block">
+              <label class="form-section-label">2. CHOOSE PAYMENT METHOD</label>
+              
+              <div class="payment-tabs">
+                <button type="button" class="pay-tab active" data-tab="card">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                  Credit / Debit Card
+                </button>
+                <button type="button" class="pay-tab" data-tab="netbanking">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/></svg>
+                  Net Banking
+                </button>
+                <button type="button" class="pay-tab" data-tab="upi">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/></svg>
+                  UPI / QR
+                </button>
+                <button type="button" class="pay-tab" data-tab="cod">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                  Cash on Delivery
+                </button>
+              </div>
+
+              <!-- Payment Sub-forms -->
+              <div class="payment-panel active" id="panelCard">
+                <div class="input-field">
+                  <label for="cardNumber">Card Number</label>
+                  <input type="text" id="cardNumber" placeholder="4242 •••• •••• 4242" maxlength="19">
+                </div>
+                <div class="form-row-2">
+                  <div class="input-field">
+                    <label for="cardExpiry">Expiry Date</label>
+                    <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+                  </div>
+                  <div class="input-field">
+                    <label for="cardCvv">CVV / CVC</label>
+                    <input type="password" id="cardCvv" placeholder="•••" maxlength="4">
+                  </div>
+                </div>
+              </div>
+
+              <div class="payment-panel" id="panelNetbanking">
+                <div class="input-field">
+                  <label for="bankSelect">Select Your Bank</label>
+                  <select id="bankSelect" class="glass-select">
+                    <option value="hdfc">HDFC Bank</option>
+                    <option value="sbi">State Bank of India (SBI)</option>
+                    <option value="icici">ICICI Bank</option>
+                    <option value="axis">Axis Bank</option>
+                    <option value="kotak">Kotak Mahindra Bank</option>
+                  </select>
+                </div>
+                <p class="panel-tip">You will be redirected to your bank's secure authorization portal upon clicking Place Order.</p>
+              </div>
+
+              <div class="payment-panel" id="panelUpi">
+                <div class="input-field">
+                  <label for="upiId">Enter UPI Virtual Payment Address (VPA)</label>
+                  <input type="text" id="upiId" placeholder="username@okhdfcbank">
+                </div>
+              </div>
+
+              <div class="payment-panel" id="panelCod">
+                <div class="cod-box">
+                  <p>Pay upon delivery at your doorstep with Cash or UPI scan to the courier.</p>
+                  <span>Verification SMS will be sent to your mobile number.</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Complete Order Button -->
+            <button type="submit" class="primary-checkout-btn order-submit-btn" id="confirmOrderBtn">
+              <span class="btn-text">Confirm Order &amp; Pay $110.00</span>
+              <span class="btn-specular"></span>
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Modal / Screen 2: Materials Research Dossier -->
+    <section class="spatial-overlay-view" id="materialsView" aria-hidden="true">
+      <div class="content-editorial-card glass-card">
+        <div class="checkout-card-header">
+          <div>
+            <span class="micro-badge">RESEARCHED AUTHENTIC DOSSIER</span>
+            <h2 class="section-title">Anatomy &amp; Material Science</h2>
+          </div>
+          <button class="close-view-btn" id="closeMaterialsBtn" aria-label="Close Materials View">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="editorial-grid">
+          <article class="editorial-column">
+            <h3 class="editorial-subhead">1. Full-Grain Supple Leather Upper</h3>
+            <p>The core structural body of the Adidas Samba OG uses an uncorrected, premium cowhide leather base. Unlike stiff synthetic vinyl alternatives, full-grain leather contains intact, dense surface fibers that stretch and mold uniquely to the user's foot anatomy over time. It delivers a breathable, buttery micro-creasing patina that matures gracefully with age.</p>
+            
+            <h3 class="editorial-subhead">2. Pigskin Suede T-Toe Overlay</h3>
+            <p>Constructed in the legendary "T-shape" mudguard, the forefoot features heavy-nap pigskin suede. Originally engineered in 1949 to withstand the friction of frozen turf and leather soccer balls, this overlay provides abrasive scuff-resistance while giving the silhouette its distinctive dual-texture heritage appearance.</p>
+          </article>
+
+          <article class="editorial-column">
+            <h3 class="editorial-subhead">3. Natural Gum Rubber Cupsole</h3>
+            <p>The amber-toned outsole is molded from non-marking, vulcanized natural gum rubber. Featuring a concentric pivot ring and multi-angle suction tread under the metatarsals, the cupsole absorbs micro-shocks, grants flexible board/pedal tactile feedback, and retains its signature sticky traction across asphalt, hardwood, and concrete.</p>
+
+            <h3 class="editorial-subhead">4. Gold-Foil Embossing &amp; Retro Tongue</h3>
+            <p>Hot-stamped parallel to the serrated zig-zag 3-Stripes, authentic metallic gold foil lettering spells 'SAMBA'. The extended flat-profile tongue features the iconic archival blue-label Trefoil crest, ensuring historical fidelity to the 1950s Munich original.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal / Screen 3: Craftsmanship Research Dossier -->
+    <section class="spatial-overlay-view" id="craftView" aria-hidden="true">
+      <div class="content-editorial-card glass-card">
+        <div class="checkout-card-header">
+          <div>
+            <span class="micro-badge">CONSTRUCTION &amp; HERITAGE</span>
+            <h2 class="section-title">Craftsmanship &amp; Engineering</h2>
+          </div>
+          <button class="close-view-btn" id="closeCraftBtn" aria-label="Close Craftsmanship View">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="editorial-grid">
+          <article class="editorial-column">
+            <h3 class="editorial-subhead">Cold-Cement Bonding Process</h3>
+            <p>The Samba OG is assembled utilizing an advanced cold-cement method rather than rigid Goodyear welting. The lasted leather upper is bonded to the gum rubber cupsole under high pneumatic pressure using eco-friendly thermal polyurethane cements. This preserves an ultra-low center of gravity and allows full natural foot articulation right out of the box with zero break-in stiffness.</p>
+            
+            <h3 class="editorial-subhead">Serrated Stripe Die-Cutting</h3>
+            <p>Every individual leather stripe is precision die-cut with authentic zig-zag saw-tooth serrations before being double-needle stitched onto the quarter panels. This prevents leather fraying over years of continuous movement while celebrating Adi Dassler’s signature 3-stripe lateral reinforcement mechanism.</p>
+          </article>
+
+          <article class="editorial-column">
+            <h3 class="editorial-subhead">Anatomical Heel Collar Construction</h3>
+            <p>The Achilles notch is lined with smooth, non-abrasive synthetic leather and padded with closed-cell EVA micro-foam. This eliminates heel slip during athletic strides and holds the foot snug inside the footbed without adding bulk to the streamlined retro profile.</p>
+
+            <h3 class="editorial-subhead">Strict MARUTI SHOOES Quality Audit</h3>
+            <p>Every pair inventoried by MARUTI SHOOES passes a 12-point inspection examining stitch tension, leather grain density, foil hot-stamp alignment, and gum cupsole vulcanization before entering our climate-controlled archive.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Modal / Screen 4: About Us (MARUTI SHOOES) -->
+    <section class="spatial-overlay-view" id="aboutView" aria-hidden="true">
+      <div class="content-editorial-card glass-card">
+        <div class="checkout-card-header">
+          <div>
+            <span class="micro-badge">OFFICIAL STORE INFORMATION</span>
+            <h2 class="section-title">About MARUTI SHOOES</h2>
+          </div>
+          <button class="close-view-btn" id="closeAboutBtn" aria-label="Close About Store View">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+
+        <div class="about-store-layout">
+          <div class="store-hero-quote">
+            <p>“We don’t just sell footwear — we preserve footwear culture. At MARUTI SHOOES, every silhouette in our collection represents a milestone in design, materials, and street heritage.”</p>
+          </div>
+
+          <div class="store-details-grid">
+            <div class="detail-card glass-card">
+              <div class="detail-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span class="detail-label">STORE IDENTITY</span>
+              <strong class="detail-value">MARUTI SHOOES</strong>
+              <p class="detail-desc">Premium sneaker archive and authenticated lifestyle footwear destination.</p>
+            </div>
+
+            <div class="detail-card glass-card">
+              <div class="detail-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <span class="detail-label">CUSTOMER HOTLINE</span>
+              <strong class="detail-value">735946708</strong>
+              <p class="detail-desc">Direct concierge support for sizing advice, order status, and inquiries.</p>
+            </div>
+
+            <div class="detail-card glass-card">
+              <div class="detail-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <span class="detail-label">DIRECT EMAIL</span>
+              <strong class="detail-value">patelmaurya73@gmail.com</strong>
+              <p class="detail-desc">Official billing, verification receipts, and partnership correspondence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Subtle Editorial Toolbar -->
+    <footer class="bottom-glass-toolbar">
+      <div class="toolbar-pill glass-capsule">
+        <span class="toolbar-stat"><strong>MARUTI SHOOES</strong> • Authenticated Heritage Collection</span>
+        <div class="toolbar-divider"></div>
+        <div class="aux-links-cluster">
+          <button class="aux-link-btn" id="navMaterialsBtn">Materials</button>
+          <span class="aux-dot">•</span>
+          <button class="aux-link-btn" id="navCraftBtn">Craftsmanship</button>
+          <span class="aux-dot">•</span>
+          <button class="aux-link-btn" id="navAboutBtn">About Store</button>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Dynamic Notification Island -->
+  <div class="dynamic-toast" id="dynamicToast">
+    <div class="toast-indicator"></div>
+    <div class="toast-content">
+      <strong id="toastTitle">Forwarding to Bag</strong>
+      <span id="toastDesc">Adidas Samba OG • Pine Green • 8.5 US</span>
+    </div>
+  </div>
+
+  <script src="script.js?v=7"></script>
+</body>
+</html>
