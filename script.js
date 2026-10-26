@@ -71,17 +71,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastDesc = document.getElementById('toastDesc');
 
   // State
-  let activeColor = 'pine';
-  let activeSize = '8.5';
+  let activeColor = 'cloud';
+  let activeSize = 'UK 8';
   let cartCount = 1;
+  const officialRetailPrice = '₹10,999';
 
-  // Assets (Exclusively Pine Green)
+  // Assets for User-Uploaded Samba OG Colorways (Cloud White & Core Black)
   const isolatedShoeAssets = {
-    pine: 'assets/disassemble_frames/frame_001.webp'
+    cloud: 'assets/colours/white_canvas.webp',
+    core: 'assets/colours/black_canvas.webp'
   };
 
   const lifestyleAssets = {
-    pine: 'assets/test_hd_001.webp'
+    cloud: 'assets/colours/samba_white.png',
+    core: 'assets/colours/samba_black.png'
   };
 
   // =========================================================================
@@ -554,26 +557,40 @@ document.addEventListener('DOMContentLoaded', () => {
   shopNowBtn?.addEventListener('click', openBagCheckout);
   bagBtn?.addEventListener('click', openBagCheckout);
 
+  // Quick Add to Bag button on hero bottom group
+  const quickBagAddBtn = document.getElementById('quickBagAddBtn');
+  quickBagAddBtn?.addEventListener('click', () => {
+    cartCount++;
+    if (bagCounter) bagCounter.textContent = cartCount;
+    showToast('Added to Bag', `Adidas Samba OG • ${getColorTitle(activeColor)} • Size ${activeSize}`);
+    setTimeout(() => {
+      openBagCheckout();
+    }, 600);
+  });
+
   // Logo Pill -> Smooth scroll to top
   navLogoPill?.addEventListener('click', (e) => {
     e.preventDefault();
     closeAllViews();
     window.scrollTo({ top: 0, behavior: 'smooth' });
     navCatBtns.forEach(b => b.classList.remove('active'));
-    document.querySelector('[data-cat="shoes"]')?.classList.add('active');
+    document.getElementById('catShopBtn')?.classList.add('active');
   });
 
-  // Category Nav Buttons
+  // Ad and Category Nav Buttons (Home, Shop, Man, Woman, Kids, 3D View)
   navCatBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       navCatBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const cat = btn.getAttribute('data-cat');
 
-      if (cat === 'pine') {
+      if (cat === 'home' || cat === 'shop') {
         closeAllViews();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        showToast('Pine Green Archive', 'Viewing assembled Samba OG');
+        showToast('Adidas Originals', cat === 'home' ? 'Welcome to Samba OG Flagship' : 'Browsing Samba OG Collection');
+      } else if (cat === 'man' || cat === 'woman' || cat === 'kids') {
+        closeAllViews();
+        showToast(`Adidas ${cat.toUpperCase()}`, `Filtered all official Samba OG sizes for ${cat.toUpperCase()}`);
       } else if (cat === 'disassembly') {
         closeAllViews();
         runAutoDisassembleIntro();
@@ -624,19 +641,25 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // 4. Colorway Selection (Synchronized across Hero & Studio)
   // =========================================================================
+  function getColorTitle(colorKey) {
+    switch (colorKey) {
+      case 'cloud': return 'Cloud White / Core Black';
+      case 'core': return 'Core Black / Cloud White';
+      default: return 'Cloud White / Core Black';
+    }
+  }
+
   function selectColorway(colorKey) {
     activeColor = colorKey;
 
-    // Update Hero shoe view
-    if (activeColor === 'pine') {
-      drawFrame(currentRenderedFrame);
-    } else if (isolatedShoeAssets[activeColor]) {
+    // Update Hero shoe canvas with clean photo
+    if (isolatedShoeAssets[activeColor]) {
       const colorImg = new Image();
       colorImg.src = isolatedShoeAssets[activeColor];
       colorImg.onload = () => {
-        if (canvasCtx && disassembleCanvas && activeColor !== 'pine') {
+        if (canvasCtx && disassembleCanvas) {
           canvasCtx.clearRect(0, 0, disassembleCanvas.width, disassembleCanvas.height);
-          canvasCtx.drawImage(colorImg, 120, 20, 720, 500);
+          canvasCtx.drawImage(colorImg, 0, 0, disassembleCanvas.width, disassembleCanvas.height);
         }
       };
     }
@@ -646,8 +669,9 @@ document.addEventListener('DOMContentLoaded', () => {
       bagItemImg.src = lifestyleAssets[activeColor];
     }
 
-    // Update active states on cards
-    colorwayCards.forEach(card => {
+    // Update color cards
+    const allCards = document.querySelectorAll('.color-photo-card, .vertical-swatch-btn, .swatch-btn');
+    allCards.forEach(card => {
       if (card.getAttribute('data-color') === activeColor) {
         card.classList.add('active');
       } else {
@@ -655,69 +679,60 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update swatches in checkout drawer
-    swatchBtns.forEach(btn => {
-      if (btn.getAttribute('data-color') === activeColor) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
-    });
+    // Reveal Step 2: Sizes and Price
+    const selectionDetailsFlow = document.getElementById('selectionDetailsFlow');
+    if (selectionDetailsFlow) {
+      selectionDetailsFlow.classList.add('active');
+      selectionDetailsFlow.classList.remove('hidden-step');
+    }
 
     // Ambient lighting adaptation
-    if (activeColor === 'pine') {
-      ambientEmerald.style.background = 'radial-gradient(circle, rgba(28, 77, 59, 0.25) 0%, transparent 70%)';
-    } else if (activeColor === 'cloud') {
-      ambientEmerald.style.background = 'radial-gradient(circle, rgba(240, 240, 245, 0.6) 0%, transparent 70%)';
-    } else if (activeColor === 'core') {
-      ambientEmerald.style.background = 'radial-gradient(circle, rgba(35, 35, 35, 0.35) 0%, transparent 70%)';
+    if (ambientEmerald) {
+      if (activeColor === 'cloud') {
+        ambientEmerald.style.background = 'radial-gradient(circle, rgba(220, 225, 235, 0.45) 0%, transparent 70%)';
+      } else if (activeColor === 'core') {
+        ambientEmerald.style.background = 'radial-gradient(circle, rgba(30, 30, 35, 0.38) 0%, transparent 70%)';
+      }
     }
 
     updateBagMeta();
-    showToast('Colorway Selected', `${activeColor.charAt(0).toUpperCase() + activeColor.slice(1)} Edition`);
+    showToast('Color Selected', `${getColorTitle(activeColor)} Edition`);
   }
 
-  // Colorway cards clicks
-  colorwayCards.forEach(card => {
+  // Initial draw of uploaded shoe
+  selectColorway('cloud');
+
+  // Color card click listeners
+  const colorCards = document.querySelectorAll('.color-photo-card, .vertical-swatch-btn, .swatch-btn');
+  colorCards.forEach(card => {
     card.addEventListener('click', () => {
-      const color = card.getAttribute('data-color');
-      if (color) selectColorway(color);
-    });
-  });
-
-  colorwaySelectBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const color = btn.getAttribute('data-color');
-      if (color) {
-        selectColorway(color);
-        openBagCheckout();
-      }
-    });
-  });
-
-  // Swatch buttons in checkout drawer
-  swatchBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const color = btn.getAttribute('data-color') || 'pine';
+      const color = card.getAttribute('data-color') || 'cloud';
       selectColorway(color);
+      
+      // Smoothly scroll slightly to reveal sizes on mobile/small screens if needed
+      const flow = document.getElementById('selectionDetailsFlow');
+      if (flow && !flow.classList.contains('active')) {
+        flow.classList.add('active');
+      }
     });
   });
 
   // Size Selector Pills
-  sizePills.forEach(pill => {
+  const sizeButtons = document.querySelectorAll('.size-pill');
+  sizeButtons.forEach(pill => {
     pill.addEventListener('click', () => {
-      sizePills.forEach(p => p.classList.remove('active'));
+      sizeButtons.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
-      activeSize = pill.textContent.trim();
+      activeSize = pill.getAttribute('data-size') || pill.textContent.trim();
       updateBagMeta();
+      showToast('Size Selected', `Adidas Samba OG • ${activeSize} • ₹10,999`);
     });
   });
 
   function updateBagMeta() {
-    const colorLabel = activeColor === 'pine' ? 'Pine Green Suede' : activeColor === 'cloud' ? 'Cloud White' : 'Core Black';
+    const colorLabel = getColorTitle(activeColor);
     if (bagItemMeta) {
-      bagItemMeta.textContent = `Colorway: ${colorLabel} • Size: ${activeSize} US`;
+      bagItemMeta.textContent = `Colorway: ${colorLabel} • Size: ${activeSize}`;
     }
   }
 
@@ -759,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Order Placed with MARUTI SHOOES!', `Confirmation SMS sent to ${phone}`);
         setTimeout(() => {
           closeAllViews();
-          confirmOrderBtn.innerHTML = `<span class="btn-text">Confirm Order &amp; Pay $110.00</span><span class="btn-specular"></span>`;
+          confirmOrderBtn.innerHTML = `<span class="btn-text">Confirm Order &amp; Pay ₹10,999</span><span class="btn-specular"></span>`;
           confirmOrderBtn.style.background = '';
         }, 2200);
       }, 1000);
