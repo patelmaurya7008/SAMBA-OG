@@ -486,7 +486,6 @@ document.addEventListener('DOMContentLoaded', () => {
   replayIntroBtn?.addEventListener('click', (e) => {
     e.stopPropagation();
     runAutoDisassembleIntro();
-    showToast('Auto 3D Demo', 'Playing architectural deconstruction sequence');
   });
 
   // Launch Auto-Disassemble intro on page open (after brief 350ms initial reveal)
@@ -587,24 +586,19 @@ document.addEventListener('DOMContentLoaded', () => {
       if (cat === 'home' || cat === 'shop') {
         closeAllViews();
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        showToast('Adidas Originals', cat === 'home' ? 'Welcome to Samba OG Flagship' : 'Browsing Samba OG Collection');
       } else if (cat === 'man' || cat === 'woman' || cat === 'kids') {
         closeAllViews();
-        showToast(`Adidas ${cat.toUpperCase()}`, `Filtered all official Samba OG sizes for ${cat.toUpperCase()}`);
       } else if (cat === 'disassembly') {
         closeAllViews();
         runAutoDisassembleIntro();
-        showToast('3D Disassembly', 'Playing Ultra-HD deconstructed architecture');
       } else if (cat === 'anatomy') {
         closeAllViews();
         materialsView?.classList.add('active-view');
         materialsView?.setAttribute('aria-hidden', 'false');
-        showToast('Anatomy Dossier', 'Exploring leather, T-toe & gum cupsole engineering');
       } else if (cat === 'craft') {
         closeAllViews();
         craftView?.classList.add('active-view');
         craftView?.setAttribute('aria-hidden', 'false');
-        showToast('Heritage & Craft', '1949 German terrace football legacy');
       }
     });
   });
@@ -696,7 +690,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateBagMeta();
-    showToast('Color Selected', `${getColorTitle(activeColor)} Edition`);
   }
 
   // Initial draw of uploaded shoe
@@ -725,7 +718,6 @@ document.addEventListener('DOMContentLoaded', () => {
       pill.classList.add('active');
       activeSize = pill.getAttribute('data-size') || pill.textContent.trim();
       updateBagMeta();
-      showToast('Size Selected', `Adidas Samba OG • ${activeSize} • ₹10,999`);
     });
   });
 
