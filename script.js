@@ -228,10 +228,8 @@ document.addEventListener('DOMContentLoaded', () => {
         lastTapTime = now;
         if (targetProgress < 0.5) {
           targetProgress = 1.0;
-          showToast('3D Disassembly', 'Exploded layers (Tap again to reassemble)');
         } else {
           targetProgress = 0.0;
-          showToast('Samba OG Assembled', 'Layers snapped back together');
         }
       }
     });
