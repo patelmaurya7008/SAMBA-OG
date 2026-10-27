@@ -1504,13 +1504,13 @@ html, body {
 
 .form-row-2 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 14px;
 }
 
 .form-row-3 {
   display: grid;
-  grid-template-columns: 1.2fr 1fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 14px;
 }
 
@@ -1519,6 +1519,8 @@ html, body {
   flex-direction: column;
   gap: 6px;
   margin-bottom: 14px;
+  min-width: 0;
+  width: 100%;
 }
 
 .input-field label {
@@ -1529,10 +1531,13 @@ html, body {
 
 .input-field input,
 .glass-select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   padding: 12px 14px;
   background: rgba(255, 255, 255, 0.7);
   border: var(--glass-border);
-  border-radius: var(--radius-inner);
+  border-radius: var(--radius-sm);
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   color: var(--text-primary);
@@ -1892,6 +1897,14 @@ html, body {
   }
 
   .checkout-layout-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row-3 {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+  
+  .form-row-2 {
     grid-template-columns: 1fr;
   }
   
