@@ -251,14 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSmoothFrame = 0;
 
   function renderFrame() {
-    // Smooth progress interpolation with luxury physical damping (slower, buttery smooth)
-    const lerpRate = isAutoPlaying ? 0.07 : 0.09;
-    scrollProgress += (targetProgress - scrollProgress) * lerpRate;
-    
-    // Clean snap to avoid micro-jitter at resting states
-    if (Math.abs(targetProgress - scrollProgress) < 0.0015) {
-      scrollProgress = targetProgress;
-    }
+    // Smooth progress interpolation
+    scrollProgress += (targetProgress - scrollProgress) * 0.20;
     const p = scrollProgress;
 
     // Motion Detection: Detect any progress change or active user interaction
@@ -318,15 +312,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // -------------------------------------------------------------
     // Phase 2: Ultra-HD 3D Model Disassembly Sequence (Frames 0 to 30)
-    // Slower, fluid filmic frame progression
+    // Starts the moment user touches screen, drags, or scrolls!
     // -------------------------------------------------------------
     const frameProg = Math.min(1, Math.max(0, p));
     const targetFrame = frameProg * (TOTAL_HD_FRAMES - 1);
-    const frameLerpRate = isAutoPlaying ? 0.09 : 0.13;
-    currentSmoothFrame += (targetFrame - currentSmoothFrame) * frameLerpRate;
-    if (Math.abs(targetFrame - currentSmoothFrame) < 0.03) {
-      currentSmoothFrame = targetFrame;
-    }
+    currentSmoothFrame += (targetFrame - currentSmoothFrame) * 0.32;
     drawFrame(currentSmoothFrame);
 
     // Update status text dynamically
@@ -428,34 +418,32 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isAutoPlaying) return;
       const elapsed = now - autoPlayStartTime;
 
-      // Slower, cinema-grade luxury disassembly choreography:
-      // 0 to 750ms: Hold assembled state so visitor sees pristine Samba OG
-      // 750ms to 4250ms (3500ms duration): Slower, smooth floating deconstruction from 0.0 to 1.0
-      // 4250ms to 7250ms (3000ms duration): Hold exploded view with callout cards glowing
-      // 7250ms to 10450ms (3200ms duration): Silky luxury re-assembly back to 0.0
-      if (elapsed < 750) {
+      // 0 to 450ms: Hold assembled state so visitor sees pristine Samba OG
+      // 450ms to 2400ms: Smoothly deconstruct from 0.0 to 1.0 (explodes layers)
+      // 2400ms to 3800ms: Hold exploded state with callouts glowing
+      // 3800ms to 5400ms: Gently re-assemble back to 0.0
+      if (elapsed < 450) {
         targetProgress = 0;
         targetMotionIntensity = 0.8;
-      } else if (elapsed < 4250) {
-        const t = (elapsed - 750) / 3500;
-        // Luxury cosine S-curve: continuous, zero-jerk acceleration and deceleration
-        const ease = 0.5 * (1 - Math.cos(Math.PI * t));
+      } else if (elapsed < 2400) {
+        const t = (elapsed - 450) / 1950;
+        const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         targetProgress = ease;
         targetMotionIntensity = 1.0;
         lastActivityTime = Date.now();
         if (statusText) {
           statusText.textContent = `AUTO-DECONSTRUCTING • ${Math.round(ease * 100)}% 3D ARCHITECTURE`;
         }
-      } else if (elapsed < 7250) {
+      } else if (elapsed < 3800) {
         targetProgress = 1.0;
         targetMotionIntensity = 0.85;
         lastActivityTime = Date.now();
         if (statusText) {
           statusText.textContent = 'EXPLODED VIEW • UPPER, INSOLE & GUM CUPSOLE';
         }
-      } else if (elapsed < 10450) {
-        const t = (elapsed - 7250) / 3200;
-        const ease = 0.5 * (1 - Math.cos(Math.PI * t));
+      } else if (elapsed < 5400) {
+        const t = (elapsed - 3800) / 1600;
+        const ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         targetProgress = 1.0 - ease;
         targetMotionIntensity = 0.8;
         lastActivityTime = Date.now();
@@ -501,8 +489,8 @@ document.addEventListener('DOMContentLoaded', () => {
     showToast('Auto 3D Demo', 'Playing architectural deconstruction sequence');
   });
 
-  // Launch Auto-Disassemble intro on page open (after brief 850ms initial reveal)
-  setTimeout(runAutoDisassembleIntro, 850);
+  // Launch Auto-Disassemble intro on page open (after brief 350ms initial reveal)
+  setTimeout(runAutoDisassembleIntro, 350);
 
   // =========================================================================
   // 4. Mousemove Parallax & Motion Velocity Tracking
