@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Navigation Elements
   const navLogoPill = document.getElementById('navLogoPill');
-  const navCatBtns = document.querySelectorAll('.nav-cat-btn');
   const bagBtn = document.getElementById('bagBtn');
   const bagCounter = document.getElementById('bagCounter');
 
