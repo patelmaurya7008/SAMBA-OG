@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
   for (let i = 0; i < TOTAL_HD_FRAMES; i++) {
     const img = new Image();
     const frameNum = String(i).padStart(3, '0');
-    img.src = `assets/hd_frames/frame_${frameNum}.webp?v=7`;
+    img.src = `assets/hd_frames/frame_${frameNum}.webp?v=8`;
     img.onload = () => {
       if (i === 0 && canvasCtx) {
         drawFrame(0);
